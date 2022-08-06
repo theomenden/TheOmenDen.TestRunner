@@ -1,0 +1,54 @@
+﻿@inherits LayoutComponentBase
+
+<Layout Sider>
+    <LayoutSider>
+<Bar Mode="BarMode.VerticalInline"
+     CollapseMode="BarCollapseMode.Small"
+     Breakpoint="Breakpoint.Desktop"
+     NavigationBreakpoint="Breakpoint.Tablet"
+     ThemeContrast="ThemeContrast.Dark">
+    <BarToggler />
+    <BarBrand>
+        <BarItem>
+            <BarLink To="#">
+                <BarIcon IconName="IconName.Dashboard" />
+                The Omen Den's Test Runner
+            </BarLink>
+        </BarItem>
+    </BarBrand>
+    <BarMenu>
+        <BarStart>
+            <BarItem>
+                <BarLink To="#home">
+                    <BarIcon IconName="IconName.Home" />
+                    Home
+                </BarLink>
+            </BarItem>
+            <BarItem>
+                <BarLink To="#docs">Documentation</BarLink>
+            </BarItem>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>
+                        <BarIcon IconName="IconName.Edit" />
+                        Dropdown
+                    </BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem>Action</BarDropdownItem>
+                        <BarDropdownItem>Another action</BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+        </BarStart>
+    </BarMenu>
+</Bar>
+    </LayoutSider>
+    <Layout>
+        <LayoutHeader Margin="Margin.Is4.OnX" Fixed>
+            <Blazorise.Link To="https://docs.microsoft.com/aspnet/">About</Blazorise.Link>
+        </LayoutHeader>
+        <LayoutContent Margin="Margin.Is4.OnX">
+            @Body
+        </LayoutContent>
+    </Layout>
+</Layout>
