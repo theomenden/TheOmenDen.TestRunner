@@ -1,0 +1,46 @@
+﻿<Container 
+    Fluid
+    Border="Border.Light.OnAll.Is2.Rounded"
+    Background="Background.Dark"
+    TextColor="TextColor.Light">
+    <Row Flex="Flex.Row.AlignContent.Center">
+        <Column Flex="Flex.Column.AlignItems.Center"
+                ColumnSize="ColumnSize.IsThird">
+            <Form Background="Background.Dark">
+                <Field Horizontal>
+                    <FieldLabel Margin="Margin.Is2.FromEnd">
+                        Upload tests
+                    </FieldLabel>
+                    <FieldBody Background="Background.Dark">
+                        <FileEdit Filter=".exe, .dll" Multiple Border="Border.Light.OnAll.Is2.Rounded"/>
+                    </FieldBody>
+                </Field>
+            </Form>
+        </Column>
+    </Row>
+    <Row>
+        <Column ColumnSize="ColumnSize.IsQuarter">
+            <Paragraph>
+                Files Uploaded:
+            </Paragraph>
+        </Column>
+        <Column ColumnSize="ColumnSize.IsQuarter">
+            <Paragraph>
+                Tests Found:
+            </Paragraph>
+        </Column>
+        <Column ColumnSize="ColumnSize.IsQuarter">
+            <Paragraph>
+                Runs: 
+            </Paragraph>
+        </Column>
+        <Column ColumnSize="ColumnSize.IsQuarter">
+            <Paragraph>
+                Successful Tests:
+            </Paragraph>
+            <Paragraph>
+                Failed Tests: 
+            </Paragraph>
+        </Column>
+    </Row>
+</Container>

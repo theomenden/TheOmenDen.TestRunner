@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/app.css",
+    "inputFile": "Styles/TestRunner.scss"
+  },
+  {
+    "outputFile": "Shared/TestRunnerFooter.razor.css",
+    "inputFile": "Styles/TestRunnerFooter.scss"
+  }
+]

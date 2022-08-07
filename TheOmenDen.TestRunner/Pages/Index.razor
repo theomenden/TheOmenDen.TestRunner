@@ -2,6 +2,28 @@
 
 <PageTitle>Index</PageTitle>
 
-<Heading Size="HeadingSize.Is1">Hello, world!</Heading>
-
-Welcome to your new app.
+<Jumbotron Flex="Flex.Grow.Is1.AlignContent.Center"
+           Background="Background.Dark"
+           TextColor="TextColor.White"
+           Border="Border.Light.OnAll.Is2.Rounded"
+           Margin="Margin.Is2.OnY"
+           Shadow="Shadow.Default">
+    <JumbotronTitle>
+        A simple, lightweight Blazor runner
+    </JumbotronTitle>
+    <JumbotronSubtitle>
+        Upload a file below to get started
+    </JumbotronSubtitle>
+</Jumbotron>
+<Container Fluid
+           Flex="Flex.InlineFlex.Column.AlignContent.Between"
+           Margin="Margin.Is3.OnY">
+    <UploadTests />
+    <ListGroup Flush
+               Background="Background.Dark"
+               Border="Border.Light.OnAll.Is2.Rounded"
+               Shadow="Shadow.Default"
+               Margin="Margin.Is2.OnY">
+        <TestDetails />
+    </ListGroup>
+</Container>

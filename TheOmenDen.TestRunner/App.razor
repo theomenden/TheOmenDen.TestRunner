@@ -6,7 +6,13 @@
     <NotFound>
         <PageTitle>Not found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <Alert role="alert">Sorry, there's nothing at this address.</Alert>
+            <Alert Color="Color.Danger">
+                <AlertMessage>Sorry, there's nothing at this address.</AlertMessage>
+                <CloseButton />
+            </Alert>
         </LayoutView>
     </NotFound>
 </Router>
+<MessageAlert />
+<NotificationAlert />
+<PageProgressAlert />
