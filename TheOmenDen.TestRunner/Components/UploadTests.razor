@@ -8,11 +8,18 @@
                 ColumnSize="ColumnSize.IsThird">
             <Form Background="Background.Dark">
                 <Field Horizontal>
-                    <FieldLabel Margin="Margin.Is2.FromEnd">
-                        Upload tests
+                    <FieldLabel Margin="Margin.Is2.FromEnd" ColumnSize="ColumnSize.IsQuarter">
+                        Upload A Test File
                     </FieldLabel>
-                    <FieldBody Background="Background.Dark">
-                        <FileEdit Filter=".exe, .dll" Multiple Border="Border.Light.OnAll.Is2.Rounded"/>
+                    <FieldBody Background="Background.Dark" ColumnSize="ColumnSize.Is9">
+                        <FileEdit @ref="@_fileEdit" 
+                                  AutoReset="false" 
+                                  Filter=".cs" 
+                                  Multiple 
+                                  Border="Border.Light.OnAll.Is2.Rounded"
+                                  Changed="OnChanged"
+                                  Written="OnWrittenAsync"
+                                  Progressed="OnProgressedAsync"/>
                     </FieldBody>
                 </Field>
             </Form>
@@ -21,7 +28,7 @@
     <Row>
         <Column ColumnSize="ColumnSize.IsQuarter">
             <Paragraph>
-                Files Uploaded:
+                Files Uploaded: @_uploadedFiles
             </Paragraph>
         </Column>
         <Column ColumnSize="ColumnSize.IsQuarter">

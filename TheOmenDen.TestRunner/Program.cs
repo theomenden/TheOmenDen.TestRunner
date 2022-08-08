@@ -37,9 +37,9 @@ try
         .AddBootstrap5Providers()
         .AddBootstrap5Components()
         .AddBootstrapIcons();
-
+                          
     await using var app = builder.Build();
-
+    
     await app.RunAsync();
 }
 catch(Exception ex)

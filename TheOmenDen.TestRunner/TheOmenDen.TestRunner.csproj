@@ -71,15 +71,18 @@
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
 		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-		<PackageReference Include="xunit" Version="2.4.2" />
+		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
+		<PackageReference Include="xunit.abstractions" Version="2.0.3" />
+		<PackageReference Include="xunit.v3" Version="0.1.1-pre.85" />
+		<PackageReference Include="xunit.v3.assert" Version="0.1.1-pre.85" />
+		<PackageReference Include="xunit.v3.assert.source" Version="0.1.1-pre.85" />
+		<PackageReference Include="xunit.v3.common" Version="0.1.1-pre.85" />
+		<PackageReference Include="xunit.v3.extensibility.core" Version="0.1.1-pre.85" />
+		<PackageReference Include="xunit.v3.runner.utility" Version="0.1.1-pre.85" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Services\" />
 	</ItemGroup>
 
 	<ItemGroup>
