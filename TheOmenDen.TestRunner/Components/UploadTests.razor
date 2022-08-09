@@ -14,7 +14,7 @@
                     <FieldBody Background="Background.Dark" ColumnSize="ColumnSize.Is9">
                         <FileEdit @ref="@_fileEdit" 
                                   AutoReset="false" 
-                                  Filter=".cs" 
+                                  Filter=".cs,.dll" 
                                   Multiple 
                                   Border="Border.Light.OnAll.Is2.Rounded"
                                   Changed="OnChanged"
@@ -33,7 +33,7 @@
         </Column>
         <Column ColumnSize="ColumnSize.IsQuarter">
             <Paragraph>
-                Tests Found:
+                Tests Found: @_summary.Total
             </Paragraph>
         </Column>
         <Column ColumnSize="ColumnSize.IsQuarter">
@@ -43,10 +43,10 @@
         </Column>
         <Column ColumnSize="ColumnSize.IsQuarter">
             <Paragraph>
-                Successful Tests:
+                Successful Tests: @(_summary.Total - _summary.Failed)
             </Paragraph>
             <Paragraph>
-                Failed Tests: 
+                Failed Tests: @_summary.Failed
             </Paragraph>
         </Column>
     </Row>

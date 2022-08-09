@@ -1,5 +1,5 @@
-﻿using Blazorise;
-using System;
+﻿using System.Text.Json;
+using Blazorise;
 
 namespace TheOmenDen.TestRunner.Components;
 public partial class UploadTests : ComponentBase
@@ -10,7 +10,11 @@ public partial class UploadTests : ComponentBase
 
     private int _uploadedFiles = 0;
 
+    private readonly RunSummary _summary = new();
+
     [Inject] public ILogger<UploadTests> Logger { get; init; }
+
+    [Inject] public ITestContextService TestContextService { get; init; }
 
     [Inject] public IPageProgressService PageProgressService { get; init; }
 
@@ -42,6 +46,12 @@ public partial class UploadTests : ComponentBase
                 {
                     Console.WriteLine($"Read:{readCount++} {readBytes / (double)MegaByte} MB");
                     // Do work on the first 1MB of data
+
+        
+                    var cases = await TestContextService.DiscoverTestCasesAsync(bufferedStream)
+                        .ToListAsync();
+
+                    _summary.Total++;
                 }
             }
         }
@@ -73,6 +83,22 @@ public partial class UploadTests : ComponentBase
         _fileEdit.Reset().AsTask();
 
         return PageProgressService.Go(0);
+    }
+
+    private static async Task<String> DeserializeStreamToStringAsync(Stream? stream)
+    {
+        var content = String.Empty;
+
+        if (stream is null)
+        {
+            return content;
+        }
+
+        using var sr = new StreamReader(stream);
+
+        content = await sr.ReadToEndAsync();
+
+        return content;
     }
 }
 

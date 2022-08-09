@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Serilog;
 using Serilog.Events;
 using TheOmenDen.TestRunner;
+using TheOmenDen.TestRunner.Extensions;
 
 Log.Logger = new LoggerConfiguration().MinimumLevel.Override("Microsoft", LogEventLevel.Error)
     .Enrich.FromLogContext()
@@ -37,7 +38,9 @@ try
         .AddBootstrap5Providers()
         .AddBootstrap5Components()
         .AddBootstrapIcons();
-                          
+
+    builder.Services.AddXUnitServices();
+
     await using var app = builder.Build();
     
     await app.RunAsync();
