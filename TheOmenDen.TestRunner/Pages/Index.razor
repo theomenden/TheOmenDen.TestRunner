@@ -19,6 +19,15 @@
            Flex="Flex.InlineFlex.Column.AlignContent.Between"
            Margin="Margin.Is3.OnY">
     <UploadTests />
+    <Div
+        Flex="Flex.Grow.Is1.Shrink.Is1.Row"
+        Border="Border.Light.OnAll.RoundedCircle.Is2" 
+        TextColor="TextColor.Light" 
+        Background="Background.Dark">
+        <Paragraph>
+            @($"Running {_testCasesToRun} of {_testCasesDiscovered} tests...")
+        </Paragraph>
+    </Div>
     <ListGroup Flush
                Background="Background.Dark"
                Border="Border.Light.OnAll.Is2.Rounded"

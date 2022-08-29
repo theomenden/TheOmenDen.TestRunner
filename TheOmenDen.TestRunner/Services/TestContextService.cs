@@ -1,45 +1,94 @@
-﻿using Xunit;
-using Xunit.Runner.Common;
+﻿using Xunit.Runner.Common;
+using Xunit.Runners;
 
 namespace TheOmenDen.TestRunner.Services;
-public class TestContextService: ITestContextService
+public class TestContextService : ITestContextService
 {
-    private readonly _IReflectionAttributeInfo _attributeInfo;
+    private static readonly object AssemblyLock = new();
 
-    public TestContextService()
+    private readonly AssemblyRunner _assemblyRunner;
+
+    private static ManualResetEvent _finished = new(false);
+
+    private static Int32 _failed = 0;
+
+    private volatile bool _cancel;
+
+    private bool _disposed;
+
+    public TestContextService(AssemblyRunner assemblyRunner)
     {
-        var attributeData = CustomAttributeData
-            .GetCustomAttributes(typeof(FactAttribute))
-            .First();
+        _assemblyRunner = assemblyRunner;
+    }
 
-        _attributeInfo = new ReflectionAttributeInfo(attributeData);
+    public async ValueTask<Int32> LoadTestsAsync(XunitProject xunitProject, String testAssembly, string? typeName, CancellationToken cancellationToken = default)
+    {
+        await using var runner = AssemblyRunner.WithoutAppDomain(testAssembly);
+        
+        runner.OnDiscoveryComplete = OnDiscoveryComplete;
+        runner.OnExecutionComplete = OnExecutionComplete;
+        runner.OnTestFailed = OnTestFailed;
+        runner.OnTestSkipped = OnTestSkipped;
+
+        runner.Start(typeName);
+
+        _finished.WaitOne();
+
+        return _failed;
     }
     
-    public async IAsyncEnumerable<IXunitTestCase> DiscoverTestCasesAsync(Stream stream)
+    private void OnDiscoveryComplete(DiscoveryCompleteInfo info)
     {
-
-        _ITestClass testClass = default;
-
-        var testCases = new List<IXunitTestCase>();
-
-        foreach (var method in testClass.Class.GetMethods(true))
+        lock (AssemblyLock)
         {
-            var testMethod = new TestMethod(testClass, method);
+            Console.WriteLine($"Running {info.TestCasesToRun} of {info.TestCasesDiscovered} tests...");
+        }
+    }
 
-            var discoverer = new FactDiscoverer();
-
-            testCases = (await discoverer.Discover(_TestFrameworkOptions.ForDiscovery(), testMethod, _attributeInfo))
-                .ToList();
+    private void OnExecutionComplete(ExecutionCompleteInfo info)
+    {
+        lock (AssemblyLock)
+        {
+            Console.WriteLine($"Finished: {info.TotalTests} tests in {Math.Round(info.ExecutionTime, 3)}s ({info.TestsFailed} failed, {info.TestsSkipped} skipped)");
         }
 
-        if (!testCases.Any())
+        _finished.Set();
+    }
+
+    private void OnTestFailed(TestFailedInfo info)
+    {
+        lock (AssemblyLock)
         {
-            yield break;
+            Console.WriteLine("[FAIL] {0}: {1}", info.TestDisplayName, info.ExceptionMessage);
+            
+            if (info.ExceptionStackTrace != null)
+            {
+                Console.WriteLine(info.ExceptionStackTrace);
+            }
         }
 
-        foreach (var testCase in testCases)
+        _failed = 1;
+    }
+
+    private void OnTestSkipped(TestSkippedInfo info)
+    {
+        lock (AssemblyLock)
         {
-            yield return testCase;
+            Console.WriteLine("[SKIP] {0}: {1}", info.TestDisplayName, info.SkipReason);
         }
+    }
+
+    /// <inheritdoc/>
+    public async ValueTask DisposeAsync()
+    {
+        lock (AssemblyLock)
+        {
+            _finished.Dispose();
+            _disposed = true;
+        }
+
+        await _assemblyRunner.DisposeAsync();
+
+        GC.SuppressFinalize(this);
     }
 }

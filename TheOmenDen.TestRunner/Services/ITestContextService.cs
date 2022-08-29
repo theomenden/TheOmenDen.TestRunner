@@ -1,6 +1,5 @@
 ﻿namespace TheOmenDen.TestRunner.Services;
 
-public interface ITestContextService
+public interface ITestContextService: IAsyncDisposable
 {
-    IAsyncEnumerable<IXunitTestCase> DiscoverTestCasesAsync(Stream stream);
 }

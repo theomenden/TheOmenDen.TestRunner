@@ -50,8 +50,10 @@
 		<PackageReference Include="Blazorise.Snackbar" Version="1.0.6" />
 		<PackageReference Include="Blazorise.SpinKit" Version="1.0.6" />
 		<PackageReference Include="Blazorise.TreeView" Version="1.0.6" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.7" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.7" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.8" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
@@ -73,12 +75,12 @@
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 		<PackageReference Include="xunit.abstractions" Version="2.0.3" />
-		<PackageReference Include="xunit.v3" Version="0.1.1-pre.85" />
-		<PackageReference Include="xunit.v3.assert" Version="0.1.1-pre.85" />
-		<PackageReference Include="xunit.v3.assert.source" Version="0.1.1-pre.85" />
-		<PackageReference Include="xunit.v3.common" Version="0.1.1-pre.85" />
-		<PackageReference Include="xunit.v3.extensibility.core" Version="0.1.1-pre.85" />
-		<PackageReference Include="xunit.v3.runner.utility" Version="0.1.1-pre.85" />
+		<PackageReference Include="xunit.v3" Version="0.1.1-pre.87" />
+		<PackageReference Include="xunit.v3.assert" Version="0.1.1-pre.87" />
+		<PackageReference Include="xunit.v3.assert.source" Version="0.1.1-pre.87" />
+		<PackageReference Include="xunit.v3.common" Version="0.1.1-pre.87" />
+		<PackageReference Include="xunit.v3.extensibility.core" Version="0.1.1-pre.87" />
+		<PackageReference Include="xunit.v3.runner.utility" Version="0.1.1-pre.87" />
 	</ItemGroup>
 
 	<ItemGroup>
