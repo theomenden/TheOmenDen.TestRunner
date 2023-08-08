@@ -50,8 +50,8 @@
 		<PackageReference Include="Blazorise.Snackbar" Version="1.2.4" />
 		<PackageReference Include="Blazorise.SpinKit" Version="1.2.4" />
 		<PackageReference Include="Blazorise.TreeView" Version="1.2.4" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.9" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.9" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.10" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
