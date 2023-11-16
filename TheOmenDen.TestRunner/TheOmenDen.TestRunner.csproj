@@ -49,7 +49,7 @@
 		<PackageReference Include="Blazorise.Icons.Bootstrap" Version="1.3.3" />
 		<PackageReference Include="Blazorise.Snackbar" Version="1.3.3" />
 		<PackageReference Include="Blazorise.SpinKit" Version="1.3.3" />
-		<PackageReference Include="Blazorise.TreeView" Version="1.3.2" />
+		<PackageReference Include="Blazorise.TreeView" Version="1.3.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.14" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.14" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
